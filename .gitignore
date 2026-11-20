@@ -1,0 +1,46 @@
+# Python bytecode and packaging
+__pycache__/
+*.py[cod]
+*.egg-info/
+/build/
+/dist/
+
+# Virtual environment managed by uv
+.venv/
+
+# Tool caches and coverage
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+.claude/settings.local.json
+
+# Source PDF: downloaded from gov.br/receitafederal, never versioned
+/data/raw/*
+!/data/raw/.gitkeep
+*.pdf
+
+# Generated artifacts: vector index, caches, local model files
+/data/index/
+*.lance/
+/.cache/
+/models/
+*.gguf
+*.safetensors
+
+# Gradio
+.gradio/
+flagged/
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
