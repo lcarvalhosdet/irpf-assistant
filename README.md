@@ -5,8 +5,8 @@ cites the official Receita Federal guide *Perguntas e Respostas IRPF 2026* (745 
 the 2026 return, calendar year 2025).
 
 > [!NOTE]
-> Work in progress. Ingestion and indexing are done, with a first retrieval baseline below.
-> The search command, answering and the API come next; architecture and a demo will follow.
+> Work in progress. Ingestion, indexing and a search command are done, with a first retrieval
+> baseline below. Answering and the API come next; architecture and a demo will follow.
 
 > [!IMPORTANT]
 > Informational content only. It does not replace an accountant or the legislation.
@@ -64,6 +64,7 @@ Requires [uv](https://docs.astral.sh/uv/), which installs Python 3.12 if needed.
 uv sync               # create .venv with Python 3.12 and the dev tools
 uv run irpf-ingest    # rebuild the dataset from the PDF (download it first: data/SOURCE.md)
 uv run irpf-index     # embed the questions into LanceDB (needs Ollama and granite-embedding:278m)
+uv run irpf-search "Posso deduzir sessões de quiropraxia?"  # closest official questions
 uv run python evals/run_eval.py --name <experiment>  # retrieval metrics -> evals/results/
 uv run pytest         # run the tests
 uv run ruff check .   # lint

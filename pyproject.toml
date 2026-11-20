@@ -15,6 +15,7 @@ dependencies = [
 [project.scripts]
 irpf-ingest = "irpf_assistant.ingest:main"
 irpf-index = "irpf_assistant.index:main"
+irpf-search = "irpf_assistant.retrieve:main"
 
 [dependency-groups]
 dev = [
