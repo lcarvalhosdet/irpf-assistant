@@ -5,8 +5,8 @@ cites the official Receita Federal guide *Perguntas e Respostas IRPF 2026* (745 
 the 2026 return, calendar year 2025).
 
 > [!NOTE]
-> Work in progress. Ingestion is done: the 745 questions are parsed into a versioned dataset.
-> Retrieval and answering come next; architecture, results and a demo will be added as they land.
+> Work in progress. Ingestion and indexing are done, with a first retrieval baseline below.
+> The search command, answering and the API come next; architecture and a demo will follow.
 
 > [!IMPORTANT]
 > Informational content only. It does not replace an accountant or the legislation.
@@ -30,6 +30,20 @@ versioned so CI can test it without the PDF ([ADR 0003](docs/adr/0003-version-pa
 The parser cross-checks the guide's table of contents against its body. That check found a
 numbering error in the official document (question 424 is listed as "423") and 26 titles that
 differ between the two. Source, version and checksum are in [`data/SOURCE.md`](data/SOURCE.md).
+
+## Results so far
+
+A first retrieval baseline, on a seed set of 30 paraphrased questions (vector search only,
+`granite-embedding:278m`, top 10). Embedding each question together with its answer beats
+embedding the question alone ([ADR 0004](docs/adr/0004-index-question-and-answer.md)):
+
+| Index | hit@1 | hit@3 | hit@5 | MRR@10 |
+|---|---|---|---|---|
+| question only | 0.567 | 0.667 | 0.800 | 0.657 |
+| question + answer | **0.633** | **0.900** | **0.933** | **0.761** |
+
+Raw runs are in [`evals/results/`](evals/results/). The full evaluation set, about 100 queries,
+comes next.
 
 ## Constraints
 

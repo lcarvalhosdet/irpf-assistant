@@ -71,7 +71,7 @@ docs/adr/
    - total de 745 perguntas;
    - ids únicos e na ordem;
    - nenhuma pergunta ou resposta vazia.
-3. Escrever `index.py`, que gera os embeddings e grava no LanceDB. Comparar duas formas de indexar: só a pergunta, ou pergunta e resposta juntas.
+3. Escrever `index.py`, que gera os embeddings e grava no LanceDB. Comparar duas formas de indexar: só a pergunta, ou pergunta e resposta juntas. Resultado: pergunta + resposta (ADR 0004).
 4. Escrever `retrieve.py`, que devolve os k trechos mais parecidos. Incluir um comando de terminal para testar uma pergunta e ver os resultados.
 5. Escrever `answer.py`, que monta o prompt com os trechos e pede uma resposta curta em português, citando o número da pergunta. Sem trecho relevante, devolve a resposta de "não encontrei".
 6. Escrever `api.py` e `ui.py`: o endpoint `POST /ask` e uma tela de chat simples.

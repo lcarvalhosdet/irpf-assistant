@@ -1,0 +1,3 @@
+experiment,config,embedding_model,queries,unreviewed,hit@1,hit@3,hit@5,mrr@10,date,commit
+index-mode,mode=question,granite-embedding:278m,30,0,0.567,0.667,0.8,0.657,2026-11-20,9453a98
+index-mode,mode=question_answer,granite-embedding:278m,30,0,0.633,0.9,0.933,0.761,2026-11-20,9453a98
