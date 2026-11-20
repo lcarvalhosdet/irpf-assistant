@@ -21,6 +21,7 @@ htmlcov/
 .env.*
 !.env.example
 .claude/settings.local.json
+.claude/launch.json
 
 # Source PDF: downloaded from gov.br/receitafederal, never versioned
 /data/raw/*

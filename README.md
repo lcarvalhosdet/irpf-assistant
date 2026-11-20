@@ -5,22 +5,24 @@ cites the official Receita Federal guide *Perguntas e Respostas IRPF 2026* (745 
 the 2026 return, calendar year 2025).
 
 > [!NOTE]
-> Work in progress. Ingestion, indexing, search and cited answers work from the terminal, with a
-> first retrieval baseline below. The API and the chat UI come next; architecture and a demo
-> will follow.
+> Work in progress. Week 1 is done: ingestion, indexing, search, cited answers, an HTTP API and
+> a chat UI all run locally, with a first retrieval baseline below. Week 2 measures answer
+> quality, adds a tool the model can call, CI and a demo.
 
 > [!IMPORTANT]
 > Informational content only. It does not replace an accountant or the legislation.
 
-## What it will do
+## What it does
 
-- Answer in Portuguese and cite the official question it used, e.g. "(Pergunta nº 123)".
-- Say it found nothing, and suggest the Receita Federal or an accountant, when the guide has no
-  relevant passage. It never invents a rule, an amount or a deadline.
-- Call a deterministic tool built on the official tax table, e.g. to compare the simplified
-  discount (*desconto simplificado*) with itemized deductions.
-- Back every quality claim with a repeatable evaluation: retrieval hit@k and MRR, answer
-  agreement, citation and refusal accuracy, latency.
+- Answers in Portuguese and cites the official question it used, e.g. "(Pergunta nº 123)". The
+  code renders the citations, and an answer with no valid citation is not shown.
+- Says it found nothing, and suggests the Receita Federal or an accountant, when the guide has
+  no relevant passage. It must never invent a rule, an amount or a deadline.
+- Backs quality claims with a repeatable evaluation: retrieval hit@k and MRR today; answer
+  agreement, citation and refusal accuracy, and latency in week 2.
+- Planned for week 2: a deterministic tool built on the official tax table, which the model
+  calls, e.g. to compare the simplified discount (*desconto simplificado*) with itemized
+  deductions.
 
 ## Data
 
@@ -67,10 +69,19 @@ uv run irpf-ingest    # rebuild the dataset from the PDF (download it first: dat
 uv run irpf-index     # embed the questions into LanceDB (needs Ollama and granite-embedding:278m)
 uv run irpf-search "Posso deduzir sessões de quiropraxia?"  # closest official questions
 uv run irpf-ask "Posso deduzir sessões de quiropraxia?"     # cited answer (needs qwen3.5:9b)
+uv run irpf-api       # HTTP API on http://127.0.0.1:8000 (docs at /docs)
+uv run irpf-ui        # chat UI on http://127.0.0.1:7860
 uv run python evals/run_eval.py --name <experiment>  # retrieval metrics -> evals/results/
 uv run pytest         # run the tests
 uv run ruff check .   # lint
 uv run ruff format .  # format
+```
+
+Asking the API:
+
+```bash
+curl -s http://127.0.0.1:8000/ask -H 'Content-Type: application/json' \
+  -d '{"question": "Posso deduzir sessões de quiropraxia?", "model": "qwen3.5:4b"}'
 ```
 
 ## Resumo em português

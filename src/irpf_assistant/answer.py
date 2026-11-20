@@ -15,12 +15,14 @@ Prompts and fixed texts live in ``irpf_assistant/prompts/``. Run ``uv run irpf-a
 from __future__ import annotations
 
 import argparse
+import functools
 import json
 import re
 import sys
 import time
 from collections.abc import Sequence
 from dataclasses import dataclass
+from enum import StrEnum
 from importlib.resources import files
 from typing import Protocol
 
@@ -28,7 +30,13 @@ import ollama
 
 from irpf_assistant.retrieve import Hit, Retriever
 
-ANSWER_MODEL = "qwen3.5:9b"  # quality; qwen3.5:4b when speed matters more
+
+class Model(StrEnum):
+    QUALITY = "qwen3.5:9b"
+    SPEED = "qwen3.5:4b"
+
+
+ANSWER_MODEL = Model.QUALITY
 DEFAULT_K = 3
 MIN_SIMILARITY = 0.60  # provisional floor from a first calibration (ADR 0005)
 MAX_PASSAGE_CHARS = 6000
@@ -185,6 +193,17 @@ class Answerer:
             retrieval_ms=retrieval_ms,
             generation_ms=generation_ms,
         )
+
+
+@functools.cache
+def shared_retriever() -> Retriever:
+    return Retriever()
+
+
+@functools.cache
+def answerer_for(model: str) -> Answerer:
+    """One Answerer per model, all sharing the index; built on first use and then reused."""
+    return Answerer(shared_retriever(), OllamaChat(model))
 
 
 def format_sources(answer: Answer) -> str:

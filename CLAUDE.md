@@ -114,4 +114,6 @@ docs/adr/
 - Busca no terminal: `uv run irpf-search "pergunta"` (mostra as perguntas oficiais mais próximas; `-k`, `--mode question`, `--answers`)
 - Resposta no terminal: `uv run irpf-ask "pergunta"` (padrão `qwen3.5:9b`; `--model qwen3.5:4b` para velocidade; `-k`, `--think`)
 - Avaliação da busca: `uv run python evals/run_eval.py --name <experimento>` (grava um CSV em `evals/results/`; rodar com a árvore limpa para o CSV registrar o commit)
-- API e interface: preencher conforme os passos forem implementados.
+- API: `uv run irpf-api` (http://127.0.0.1:8000/docs; `POST /ask` com `{"question": ..., "model": "qwen3.5:9b" | "qwen3.5:4b"}`)
+- Interface: `uv run irpf-ui` (http://127.0.0.1:7860)
+- Os servidores rodam pelo terminal: o preview do app não acessa a pasta Documentos (permissão do macOS).
