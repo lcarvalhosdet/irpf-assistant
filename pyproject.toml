@@ -6,11 +6,15 @@ readme = "README.md"
 # An application, not a library: pinning one Python minor keeps the lockfile simple (ADR 0001).
 requires-python = ">=3.12,<3.13"
 dependencies = [
+    "lancedb>=0.41.0",
+    "ollama>=0.6.3",
+    "pyarrow>=26.0.1",
     "pymupdf>=2.1",
 ]
 
 [project.scripts]
 irpf-ingest = "irpf_assistant.ingest:main"
+irpf-index = "irpf_assistant.index:main"
 
 [dependency-groups]
 dev = [

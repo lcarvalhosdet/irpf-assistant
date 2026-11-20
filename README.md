@@ -49,6 +49,8 @@ Requires [uv](https://docs.astral.sh/uv/), which installs Python 3.12 if needed.
 ```bash
 uv sync               # create .venv with Python 3.12 and the dev tools
 uv run irpf-ingest    # rebuild the dataset from the PDF (download it first: data/SOURCE.md)
+uv run irpf-index     # embed the questions into LanceDB (needs Ollama and granite-embedding:278m)
+uv run python evals/run_eval.py --name <experiment>  # retrieval metrics -> evals/results/
 uv run pytest         # run the tests
 uv run ruff check .   # lint
 uv run ruff format .  # format

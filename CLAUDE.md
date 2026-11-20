@@ -110,4 +110,6 @@ docs/adr/
 - Testes: `uv run pytest`
 - Lint: `uv run ruff check .`
 - Formatação: `uv run ruff format .` (só conferir, sem alterar: `uv run ruff format --check .`)
-- API, interface e avaliação: preencher conforme os passos forem implementados.
+- Índice: `uv run irpf-index` (grava as tabelas `question` e `question_answer` em `data/index/`; precisa do Ollama com `granite-embedding:278m`; `--limit N` testa numa amostra)
+- Avaliação da busca: `uv run python evals/run_eval.py --name <experimento>` (grava um CSV em `evals/results/`; rodar com a árvore limpa para o CSV registrar o commit)
+- API e interface: preencher conforme os passos forem implementados.

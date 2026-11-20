@@ -1,0 +1,30 @@
+{"query": "Como funciona a declaração no modelo simplificado? Perco o direito às outras deduções?", "expected_id": 12, "source": "llm", "reviewed": true}
+{"query": "Onde eu entrego a declaração do imposto de renda deste ano? Dá pra mandar pela internet?", "expected_id": 37, "source": "llm", "reviewed": true}
+{"query": "Como a Receita chega no valor sobre o qual o imposto é calculado na minha declaração?", "expected_id": 62, "source": "llm", "reviewed": true}
+{"query": "Sou curador do meu irmão, que foi interditado. Como fica a declaração de imposto de renda dele?", "expected_id": 86, "source": "llm", "reviewed": true}
+{"query": "Meu pai faleceu devendo imposto. O apartamento que ele me doou ainda em vida pode ser usado para pagar essa dívida?", "expected_id": 111, "source": "llm", "reviewed": true}
+{"query": "Moro no Brasil e recebo uma renda de um país que tem tratado com o Brasil para evitar bitributação. Como esse dinheiro é tributado aqui?", "expected_id": 136, "source": "llm", "reviewed": true}
+{"query": "Sou funcionário do NDB, o banco do BRICS. Preciso pagar imposto de renda sobre o salário?", "expected_id": 161, "source": "llm", "reviewed": true}
+{"query": "Recebi horas extras atrasadas por causa de um acordo do sindicato com a empresa. Esse valor entra no imposto de renda?", "expected_id": 186, "source": "llm", "reviewed": true}
+{"query": "Meu pai passou para mim o direito de receber o aluguel de um apartamento dele. Quem declara esse aluguel, eu ou ele?", "expected_id": 211, "source": "llm", "reviewed": true}
+{"query": "Tenho uma doença grave e continuo trabalhando com carteira assinada. Meu salário fica isento de imposto?", "expected_id": 236, "source": "llm", "reviewed": true}
+{"query": "Fui equiparado a empresa por fazer loteamentos e fiquei 36 meses sem lançar nada novo. O que acontece com os imóveis que ainda estavam na empresa?", "expected_id": 260, "source": "llm", "reviewed": true}
+{"query": "Tenho câncer e recebi de uma vez vários anos de aposentadoria atrasada por decisão judicial. Pago imposto sobre esse valor?", "expected_id": 285, "source": "llm", "reviewed": true}
+{"query": "Vou pagar uma entidade de assistência social sem fins lucrativos que fica em outro país. Essa remessa é tributada pelo imposto de renda?", "expected_id": 310, "source": "llm", "reviewed": true}
+{"query": "Até quanto posso abater do imposto o que pago de previdência privada?", "expected_id": 335, "source": "llm", "reviewed": true}
+{"query": "O juiz mandou eu pagar, além da pensão, a escola e o plano de saúde do meu filho. Posso deduzir tudo como pensão alimentícia?", "expected_id": 360, "source": "llm", "reviewed": true}
+{"query": "Faço quiropraxia toda semana. Dá pra lançar esses gastos como despesa médica no IR?", "expected_id": 384, "source": "llm", "reviewed": true}
+{"query": "Pago a faculdade do meu sobrinho. Posso deduzir esse gasto com educação no meu imposto?", "expected_id": 409, "source": "llm", "reviewed": true}
+{"query": "Sou dentista autônomo e comprei uma cadeira odontológica nova. Posso lançar a compra como despesa no livro-caixa?", "expected_id": 434, "source": "llm", "reviewed": true}
+{"query": "Virei empresa individual por fazer incorporação de imóveis. Como ficam esses imóveis na ficha de bens e direitos da minha declaração?", "expected_id": 459, "source": "llm", "reviewed": true}
+{"query": "Usei o FGTS pra quitar meu apartamento. Como informo isso na declaração?", "expected_id": 484, "source": "llm", "reviewed": true}
+{"query": "Plantei eucalipto no meu sítio e vendi a madeira. Como esse dinheiro é tributado?", "expected_id": 509, "source": "llm", "reviewed": true}
+{"query": "Arrendei minha terra e recebo o pagamento em sacas de soja, não em dinheiro. Como declaro isso?", "expected_id": 534, "source": "llm", "reviewed": true}
+{"query": "Tenho uma fazenda e gasto com um escritório na cidade para administrá-la. Posso abater esse gasto da receita da atividade rural?", "expected_id": 558, "source": "llm", "reviewed": true}
+{"query": "No mesmo mês vendi um terreno com lucro e um carro com prejuízo. Posso descontar o prejuízo de um do lucro do outro no ganho de capital?", "expected_id": 583, "source": "llm", "reviewed": true}
+{"query": "Me divorciei e na partilha teve ganho de capital. Até quando tenho que pagar o imposto?", "expected_id": 608, "source": "llm", "reviewed": true}
+{"query": "Troquei um imóvel meu por dois outros imóveis. Como defino o valor de cada um?", "expected_id": 633, "source": "llm", "reviewed": true}
+{"query": "Comprei um terreno em 1985 e construí a casa em 1995. Na hora de vender, como aplico o percentual de redução do ganho de capital?", "expected_id": 658, "source": "llm", "reviewed": true}
+{"query": "Vendi um imóvel financiado e o comprador assumiu o saldo devedor. Para a isenção de bem de pequeno valor, conta o valor total ou só o que eu recebi?", "expected_id": 682, "source": "llm", "reviewed": true}
+{"query": "Vender ações na bolsa é isento de imposto até quanto por mês?", "expected_id": 707, "source": "llm", "reviewed": true}
+{"query": "Quanto de imposto pago quando resgato cotas de um fundo de ações?", "expected_id": 732, "source": "llm", "reviewed": true}

@@ -27,7 +27,7 @@ from pathlib import Path
 
 import pymupdf
 
-from irpf_assistant.paths import QUESTIONS_PATH, RAW_PDF, ROOT
+from irpf_assistant.paths import QUESTIONS_PATH, RAW_PDF, display_path
 
 EXPECTED_QUESTIONS = 745
 
@@ -323,13 +323,6 @@ def read_jsonl(path: Path) -> list[Question]:
         return [Question(**json.loads(line)) for line in file]
 
 
-def _display(path: Path) -> str:
-    try:
-        return str(path.resolve().relative_to(ROOT))
-    except ValueError:
-        return str(path)
-
-
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--pdf", type=Path, default=RAW_PDF, help="source PDF")
@@ -354,7 +347,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             file=sys.stderr,
         )
     first, last = questions[0].page, questions[-1].page
-    print(f"wrote {len(questions)} questions (pages {first}-{last}) to {_display(args.out)}")
+    print(f"wrote {len(questions)} questions (pages {first}-{last}) to {display_path(args.out)}")
     return 0
 
 
