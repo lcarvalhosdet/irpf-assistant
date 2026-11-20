@@ -31,7 +31,7 @@ Mudanças relevantes viram um ADR curto em `docs/adr/`.
   - `qwen3.5:4b` quando a prioridade for velocidade.
 - Embeddings: `granite-embedding:278m` via Ollama (multilíngue, inclui português).
 - Banco vetorial: LanceDB, em arquivo local, sem servidor.
-- Leitura do PDF: PyMuPDF ou Docling. Escolher o que preservar melhor a numeração e a divisão das perguntas.
+- Leitura do PDF: PyMuPDF ou Docling. Escolher o que preservar melhor a numeração e a divisão das perguntas. Decidido: PyMuPDF (ADR 0002).
 - API e interface: FastAPI e Gradio.
 - CI: GitHub Actions com lint, testes e avaliação da busca. O CI não chama o LLM.
 
@@ -39,7 +39,7 @@ Mudanças relevantes viram um ADR curto em `docs/adr/`.
 
 - Fonte: o PDF oficial "Perguntas e Respostas IRPF 2026", no site da Receita Federal (gov.br/receitafederal). Registrar em `data/SOURCE.md` a URL, a versão do PDF e a data do download.
 - `data/raw/`: o PDF original. Não editar e não versionar no git.
-- `data/processed/questions.jsonl`: uma linha por pergunta, com `id` (número oficial), `chapter`, `title`, `question`, `answer` e `page`.
+- `data/processed/questions.jsonl`: uma linha por pergunta, com `id` (número oficial), `chapter`, `title`, `question`, `answer` e `page`. Versionado no git (ADR 0003).
 - Conferência: devem sair 745 perguntas. Se o número for outro, investigar antes de seguir.
 
 ## Estrutura planejada
@@ -101,11 +101,12 @@ docs/adr/
 - Antes de qualquer coisa demorada, como reindexar tudo ou rodar a avaliação completa, avisar e perguntar.
 - Toda mudança de modelo, prompt ou parâmetro de busca roda a avaliação e registra o resultado.
 - Prompts ficam em `src/irpf_assistant/prompts/`, nunca espalhados pelo código.
-- Não commitar segredos, o PDF nem arquivos gerados (índice, cache, modelos).
+- Não commitar segredos, o PDF nem arquivos gerados (índice, cache, modelos). Exceção: o `questions.jsonl` (ADR 0003).
 
 ## Comandos
 
 - Setup: `uv sync` (cria o `.venv` com Python 3.12 e as ferramentas de desenvolvimento)
+- Ingestão: `uv run irpf-ingest` (PDF → `data/processed/questions.jsonl`; `-v` lista as divergências do sumário). O PDF precisa estar em `data/raw/` (ver `data/SOURCE.md`).
 - Testes: `uv run pytest`
 - Lint: `uv run ruff check .`
 - Formatação: `uv run ruff format .` (só conferir, sem alterar: `uv run ruff format --check .`)

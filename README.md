@@ -5,8 +5,8 @@ cites the official Receita Federal guide *Perguntas e Respostas IRPF 2026* (745 
 the 2026 return, calendar year 2025).
 
 > [!NOTE]
-> Work in progress. The project skeleton is in place; ingestion, retrieval and answering come next.
-> Architecture, results and a demo will be added here as they land.
+> Work in progress. Ingestion is done: the 745 questions are parsed into a versioned dataset.
+> Retrieval and answering come next; architecture, results and a demo will be added as they land.
 
 > [!IMPORTANT]
 > Informational content only. It does not replace an accountant or the legislation.
@@ -20,6 +20,16 @@ the 2026 return, calendar year 2025).
   discount (*desconto simplificado*) with itemized deductions.
 - Back every quality claim with a repeatable evaluation: retrieval hit@k and MRR, answer
   agreement, citation and refusal accuracy, latency.
+
+## Data
+
+[`data/processed/questions.jsonl`](data/processed/questions.jsonl) holds the guide's 745
+questions, one JSON object per line (`id`, `chapter`, `title`, `question`, `answer`, `page`).
+It is built from the official PDF with PyMuPDF ([ADR 0002](docs/adr/0002-pdf-parser.md)) and
+versioned so CI can test it without the PDF ([ADR 0003](docs/adr/0003-version-parsed-dataset.md)).
+The parser cross-checks the guide's table of contents against its body. That check found a
+numbering error in the official document (question 424 is listed as "423") and 26 titles that
+differ between the two. Source, version and checksum are in [`data/SOURCE.md`](data/SOURCE.md).
 
 ## Constraints
 
@@ -38,6 +48,7 @@ Requires [uv](https://docs.astral.sh/uv/), which installs Python 3.12 if needed.
 
 ```bash
 uv sync               # create .venv with Python 3.12 and the dev tools
+uv run irpf-ingest    # rebuild the dataset from the PDF (download it first: data/SOURCE.md)
 uv run pytest         # run the tests
 uv run ruff check .   # lint
 uv run ruff format .  # format
