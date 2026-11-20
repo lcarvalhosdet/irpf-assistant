@@ -16,6 +16,7 @@ dependencies = [
 irpf-ingest = "irpf_assistant.ingest:main"
 irpf-index = "irpf_assistant.index:main"
 irpf-search = "irpf_assistant.retrieve:main"
+irpf-ask = "irpf_assistant.answer:main"
 
 [dependency-groups]
 dev = [

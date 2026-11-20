@@ -112,5 +112,6 @@ docs/adr/
 - Formatação: `uv run ruff format .` (só conferir, sem alterar: `uv run ruff format --check .`)
 - Índice: `uv run irpf-index` (grava as tabelas `question` e `question_answer` em `data/index/`; precisa do Ollama com `granite-embedding:278m`; `--limit N` testa numa amostra)
 - Busca no terminal: `uv run irpf-search "pergunta"` (mostra as perguntas oficiais mais próximas; `-k`, `--mode question`, `--answers`)
+- Resposta no terminal: `uv run irpf-ask "pergunta"` (padrão `qwen3.5:9b`; `--model qwen3.5:4b` para velocidade; `-k`, `--think`)
 - Avaliação da busca: `uv run python evals/run_eval.py --name <experimento>` (grava um CSV em `evals/results/`; rodar com a árvore limpa para o CSV registrar o commit)
 - API e interface: preencher conforme os passos forem implementados.
